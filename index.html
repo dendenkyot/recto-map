@@ -5,32 +5,42 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; }
-    #map { height: 600px; width: 90%; margin: auto; border: 2px solid #333; }
+    body {
+      background: linear-gradient(#a8dadc, #457b9d); /* website background */
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    #map {
+      height: 600px;
+      width: 90%;
+      margin: 20px auto;
+      border: 3px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
-  <h1>Recto Memorial National High School Interactive Map</h1>
+  <h1>Recto Memorial National High School Map</h1>
   <div id="map"></div>
-
   <script>
-    // Create map with simple image coordinates
     var map = L.map('map', {
       crs: L.CRS.Simple,
       minZoom: -1
     });
 
-    // Adjust to your image size (example 1200x800 pixels)
-    var bounds = [[0,0], [800,1200]];
+    // size of image (adjust if needed)
+    var bounds = [[0,0], [1000,1000]];
+
+    // your map image
     var image = L.imageOverlay('school-map.png', bounds).addTo(map);
     map.fitBounds(bounds);
 
-    // Add markers for important places
-    L.marker([700, 200]).addTo(map).bindPopup("<b>Main Gate</b>");
-    L.marker([600, 600]).addTo(map).bindPopup("<b>Library 📚</b>");
-    L.marker([500, 400]).addTo(map).bindPopup("<b>Computer Lab 💻</b>");
-    L.marker([300, 800]).addTo(map).bindPopup("<b>Canteen 🍔</b>");
-    L.marker([200, 1000]).addTo(map).bindPopup("<b>Covered Court 🏀</b>");
+    // markers
+    L.marker([300, 400]).addTo(map).bindPopup("<b>Main Gate</b>");
+    L.marker([600, 500]).addTo(map).bindPopup("<b>Library</b>");
+    L.marker([800, 700]).addTo(map).bindPopup("<b>Canteen 🍔</b>");
+    L.marker([500, 200]).addTo(map).bindPopup("<b>Computer Lab 💻</b>");
   </script>
 </body>
 </html>
